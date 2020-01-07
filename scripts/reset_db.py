@@ -16,7 +16,7 @@ def create_schema(engine):
 
     query = '\n'.join([f'''
         CREATE TABLE daily_{table} (
-            date DATE,
+            date DATE PRIMARY KEY,
             "caloriesOut" FLOAT8,
             max INT,
             min INT,
@@ -27,7 +27,7 @@ def create_schema(engine):
     # Create the remaining tables
     query += '''
         CREATE TABLE daily_summary (
-            datetime TIMESTAMP,
+            datetime TIMESTAMP PRIMARY KEY,
             calories INT,
             steps INT,
             floors INT,
@@ -35,7 +35,7 @@ def create_schema(engine):
         );
 
         CREATE TABLE intraday (
-            datetime TIMESTAMP,
+            datetime TIMESTAMP PRIMARY KEY,
             heart_min INT,
             calories INT,
             steps INT,
@@ -44,17 +44,17 @@ def create_schema(engine):
         );
 
         CREATE TABLE heart (
-            datetime TIMESTAMP,
+            datetime TIMESTAMP PRIMARY KEY,
             value INT
         );
 
         CREATE TABLE sleep_stage (
-            datetime TIMESTAMP,
+            datetime TIMESTAMP PRIMARY KEY,
             stage INT
         );
 
         CREATE TABLE sleep_summary (
-            date DATE,
+            date DATE PRIMARY KEY,
             deep FLOAT8,
             light FLOAT8,
             rem FLOAT8,
@@ -64,7 +64,7 @@ def create_schema(engine):
         );
 
         CREATE TABLE sleep_misc (
-            date DATE,
+            date DATE PRIMARY KEY,
             "awakeCount" INT,
             "awakeDuration" INT,
             "awakeningsCount" INT,
